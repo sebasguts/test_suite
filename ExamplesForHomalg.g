@@ -7,6 +7,8 @@ cd $PKG_PATH
 ## ExamplesForHomalg
 cd ExamplesForHomalg/examples/
 
+echo "QUIT;" > quit.g
+
 ## Hom(Hom(-,Z128),Z16)_On_Seq.g
 for i in \
 "Hom(Hom(-,Z128),Z16)_On_Seq.g" \
@@ -17,7 +19,7 @@ for i in \
     echo "========================="
     echo $i "(ExamplesForHomalg)"
     echo "========================="
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
 
 ## FoSys_HoEq_*.g
@@ -28,7 +30,7 @@ FoSys_HoEq_*.g \
     echo "========================="
     echo $i "(ExamplesForHomalg)"
     echo "========================="
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
 
 ## Singular
@@ -62,11 +64,15 @@ Gcd_UsingCayleyDeterminant.g \
     echo "========================="
     echo $i "(ExamplesForHomalg)"
     echo "========================="
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 ## MAGMA
 cd MAGMA
+
+echo "QUIT;" > quit.g
 
 for i in \
 Purity.g \
@@ -83,13 +89,17 @@ Gcd_UsingCayleyDeterminant.g \
     echo MAGMA/$i "(ExamplesForHomalg)"
     echo "========================="
     update_from_directory_one_level_up
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 cd ../
 
 ## Macaulay2
 cd Macaulay2
+
+echo "QUIT;" > quit.g
 
 # EdW.g:	191.906 sec.
 
@@ -109,13 +119,17 @@ Gcd_UsingCayleyDeterminant.g \
     echo Macaulay2/$i "(ExamplesForHomalg)"
     echo "========================="
     update_from_directory_one_level_up
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 cd ../
 
 ## Maple
 cd maple
+
+echo "QUIT;" > quit.g
 
 # TorExt.g:	2572.239 sec.
 # ExtExt.g:	
@@ -135,8 +149,10 @@ Gcd_UsingCayleyDeterminant.g \
     echo maple/$i "(ExamplesForHomalg)"
     echo "========================="
     update_from_directory_one_level_up
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 cd ../
 

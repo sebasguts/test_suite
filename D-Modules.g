@@ -7,6 +7,8 @@ cd $PKG_PATH
 ## D-Modules
 cd D-Modules/examples/
 
+echo "QUIT;" > quit.g
+
 for i in \
 Localized_Reiffen.g \
 ; do
@@ -14,7 +16,9 @@ Localized_Reiffen.g \
     echo "========================="
     echo $i "(D-Modules)"
     echo "========================="
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 cd ../..

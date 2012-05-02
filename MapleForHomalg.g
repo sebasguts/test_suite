@@ -9,6 +9,8 @@ cd $PKG_PATH
 ## MapleForHomalg
 cd MapleForHomalg/examples/
 
+echo "QUIT;" > quit.g
+
 for i in \
 A3_Purity.g \
 ; do
@@ -16,7 +18,9 @@ A3_Purity.g \
     echo "========================="
     echo $i "(MapleForHomalg)"
     echo "========================="
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 cd ../..

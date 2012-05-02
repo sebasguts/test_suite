@@ -7,6 +7,8 @@ cd $PKG_PATH
 ## Sheaves
 cd Sheaves/examples/
 
+echo "QUIT;" > quit.g
+
 ## Singular
 for i in \
 Curve\:g\=?_and* Curve\:g\=10_and_g\^2_6-Sextic.g \
@@ -22,11 +24,15 @@ FilteredByPurity.g \
     echo "========================="
     echo $i "(Sheaves)"
     echo "========================="
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 ## MAGMA
 cd MAGMA
+
+echo "QUIT;" > quit.g
 
 for i in \
 Curve\:g\=10_and_g\^2_6-Sextic.g \
@@ -40,13 +46,17 @@ FilteredByPurity.g \
     echo MAGMA/$i "(Sheaves)"
     echo "========================="
     update_from_directory_one_level_up
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 cd ../
 
 ## Macaulay2
 cd Macaulay2
+
+echo "QUIT;" > quit.g
 
 for i in \
 Curve\:g\=10_and_g\^2_6-Sextic.g \
@@ -61,13 +71,17 @@ FilteredByPurity.g \
     echo Macaulay2/$i "(Sheaves)"
     echo "========================="
     update_from_directory_one_level_up
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 cd ../
 
 ## Maple
 cd maple
+
+echo "QUIT;" > quit.g
 
 for i in \
 Curve\:g\=5_and_g\^1_3-Quintic.g \
@@ -81,8 +95,10 @@ FilteredByPurity.g \
     echo Maple/$i "(Sheaves)"
     echo "========================="
     update_from_directory_one_level_up
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 cd ../
 

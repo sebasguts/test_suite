@@ -15,7 +15,9 @@ cd $PKG_PATH
     echo -e "\033[0m"
 } >&2
 
-gap "${BIN_PATH}/LoadSheaves.g" < /dev/null
+echo "QUIT;" >  quit.g
+
+gap -T "${BIN_PATH}/LoadSheaves.g" quit.g
 
 
 {
@@ -29,7 +31,9 @@ gap "${BIN_PATH}/LoadSheaves.g" < /dev/null
     echo -e "\033[0m"
 } >&2
 
-gap "${BIN_PATH}/LoadAllPackages.g" < /dev/null
+gap -T "${BIN_PATH}/LoadAllPackages.g" quit.g
+
+rm quit.g
 
 L="RingsForHomalg MatricesForHomalg HomalgToCAS VirtualCAS IO_ForHomalg Gauss GaussForHomalg SCO alexander Conley SimplicialObjects Orbifolds LocalizeRingForHomalg GradedRingForHomalg k-Points AbelianSystems homalg Modules SystemTheory Sheaves D-Modules ExamplesForHomalg GradedModules"
 

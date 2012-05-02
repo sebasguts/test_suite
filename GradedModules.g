@@ -7,6 +7,8 @@ cd $PKG_PATH
 ## GradedModules
 cd GradedModules/examples/
 
+echo "QUIT;" > quit.g
+
 ## Singular
 for i in \
 HilbertPolynomial.g \
@@ -27,11 +29,15 @@ VectorBundleOnP1_Example5.2.g \
     echo "========================="
     echo $i "(GradedModules)"
     echo "========================="
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 ## MAGMA
 cd MAGMA
+
+echo "QUIT;" > quit.g
 
 for i in \
 HilbertPolynomial.g \
@@ -51,13 +57,17 @@ NonCohenMacaulayMonomialIdeal.g \
     echo MAGMA/$i "(GradedModules)"
     echo "========================="
     update_from_directory_one_level_up
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 cd ../
 
 ## Macaulay2
 cd Macaulay2
+
+echo "QUIT;" > quit.g
 
 for i in \
 HilbertPolynomial.g \
@@ -78,13 +88,17 @@ VectorBundleOnP1_Example5.1.g \
     echo Macaulay2/$i "(GradedModules)"
     echo "========================="
     update_from_directory_one_level_up
-    gap $i < /dev/null
+    gap -T $i quit.g
 done
+
+rm quit.g
 
 cd ../
 
 ## Maple
 cd maple
+
+echo "QUIT;" > quit.g
 
 for i in \
 HilbertPolynomial.g \
@@ -104,6 +118,8 @@ VectorBundleOnP1_Example5.1.g \
     update_from_directory_one_level_up
     gap $i < /dev/null
 done
+
+rm quit.g
 
 cd ../
 
